@@ -1,0 +1,206 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.hero-portrait {
+  position: absolute;
+  top: clamp(1.5rem, 5vh, 3.5rem);
+  right: clamp(1.25rem, 5vw, 4.5rem);
+  z-index: 1;
+  width: clamp(7.5rem, 18vw, 13rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--paper) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 35%, transparent);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+.portrait-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 78%, rgba(12, 106, 110, 0.28), transparent 60%),
+    var(--veil);
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-copy {
+  width: min(44rem, calc(100% - 3rem));
+  margin: 0 0 clamp(2rem, 6vh, 4.5rem) clamp(1.25rem, 5vw, 4.5rem);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 9vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.headline {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  letter-spacing: 0.02em;
+  color: var(--mist);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+.place {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 55%, var(--mist));
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both;
+}
+
+.lede {
+  margin: 0.35rem 0 0;
+  max-width: 40rem;
+  font-size: clamp(0.98rem, 1.55vw, 1.12rem);
+  line-height: 1.55;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--paper) 86%, var(--mist));
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both;
+}
+
+.lede strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.cta {
+  margin-top: 1rem;
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.15rem 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--paper);
+  border-bottom: 2px solid color-mix(in srgb, var(--accent) 80%, white);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.cta-link::after {
+  content: "→";
+  transition: transform 200ms ease;
+}
+
+.cta-link:hover {
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.cta-link:hover::after {
+  transform: translateX(4px);
+}
+
+.cta-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-photo {
+    object-position: center 35%;
+  }
+
+  .hero-portrait {
+    top: 1.25rem;
+    right: 1rem;
+    width: clamp(5.5rem, 28vw, 7rem);
+  }
+
+  .hero-copy {
+    width: min(100%, calc(100% - 2rem));
+    margin: 0 0 2rem 1rem;
+  }
+
+  .brand {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+
+  .lede {
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand,
+  .headline,
+  .place,
+  .lede,
+  .cta,
+  .hero-portrait {
+    animation: none;
+  }
+}

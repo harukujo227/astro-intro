@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import "../styles/home.css";
+
+const name = "Haru Kujo";
+const role = "Senior Software Engineer";
+const location = "Shizuoka, Japan";
+const email = "hello@harukujo.dev";
+const title = `${name} — ${role}`;
+const description =
+  "Senior Software Engineer with 7+ years of experience designing, developing, and deploying scalable web applications and distributed systems. Based in Shizuoka, Japan.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-label="Introduction">
+        <div class="hero-visual" aria-hidden="true">
+          <img
+            class="hero-photo"
+            src="/images/shizuoka.avif"
+            alt=""
+            width="2400"
+            height="1600"
+          />
+          <div class="hero-veil"></div>
+          <div class="hero-grain"></div>
+        </div>
+
+        <div class="hero-portrait">
+          <img
+            class="portrait-photo"
+            src="/images/portrait.png"
+            alt={name}
+            width="640"
+            height="640"
+          />
+        </div>
+
+        <div class="hero-copy">
+          <p class="brand">{name}</p>
+          <h1 class="headline">{role}</h1>
+          <p class="place">{location}</p>
+          <p class="lede">
+            Senior Software Engineer with <strong>7+ years</strong> of experience
+            designing, developing, and deploying scalable
+            <strong>web applications</strong> and distributed systems. Proficient
+            in <strong>modern full-stack development</strong> using
+            <strong>React.js, Next.js, TypeScript, Node.js, Python</strong> and
+            cloud technologies. Experienced in building high-performance user
+            interfaces, architecting <strong>RESTful APIs</strong>, optimizing
+            database performance, and integrating
+            <strong>AI-powered</strong> services. Strong background in
+            microservices architecture, cloud infrastructure
+            (<strong>AWS</strong>), <strong>Docker</strong>, and
+            <strong>CI/CD pipelines</strong>, delivering reliable and
+            maintainable production systems. Passionate about solving complex
+            technical challenges, improving system performance, and building
+            innovative products that create real business value.
+          </p>
+          <div class="cta">
+            <a class="cta-link" href={`mailto:${email}`}>Get in touch</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
