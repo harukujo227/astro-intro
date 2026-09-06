@@ -9,13 +9,19 @@ const email = "harukujo227@gmail.com";
 const title = `${name} — ${role}`;
 const description =
   "Senior Software Engineer with 7+ years of experience designing, developing, and deploying scalable web applications and distributed systems. Based in Shizuoka, Japan.";
+const asset = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  return `${base}${path.replace(/^\//, "")}`;
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" href={asset("favicon.ico")} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
@@ -33,7 +39,7 @@ const description =
         <div class="hero-visual" aria-hidden="true">
           <img
             class="hero-photo"
-            src={`${import.meta.env.BASE_URL}images/shizuoka.avif`}
+            src={asset("images/shizuoka.avif")}
             alt=""
             width="2400"
             height="1600"
@@ -45,7 +51,7 @@ const description =
         <div class="hero-portrait">
           <img
             class="portrait-photo"
-            src={`${import.meta.env.BASE_URL}images/portrait.png`}
+            src={asset("images/portrait.png")}
             alt={name}
             width="640"
             height="640"
